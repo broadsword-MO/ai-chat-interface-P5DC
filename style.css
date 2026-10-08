@@ -1,0 +1,252 @@
+:root {
+    --body-background: #f8f1e9;
+    --primary-text: #3f2a1e;
+    --secondary-text: #6b5a4a;
+    --accent-links: #c17a4e;
+    --link-hover: #a15f38;
+    --image-container-bg: #faf4ec;
+    --borders-dividers: #e6d9c8;
+    --secondary-text-light: #9b8c7d;
+    --accent-links-light: #da9367;
+}
+
+/* *,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+} */
+
+html {
+    /* padding: 0;
+    margin: 0;
+    line-height: 1.5;
+    color-scheme: light dark; */
+    font-size: clamp(12px, 3vw, 16px);
+}
+
+.body {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    background-color: var(--body-background);
+    padding: 10px;
+    padding-bottom: 6rem;
+    color: var(--primary-text);
+}
+
+.intro,
+h2,
+ol,
+ul,
+.ask {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1,
+h2,
+h3 {
+    margin: 1em;
+    color: var(--secondary-text);
+    font-weight: 600;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    /* margin-top: 10px; */
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+.intro {
+    border: 3px solid var(--borders-dividers);
+    border-radius: 0.75rem;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    padding: 0px 10px 10px 10px;
+    /* margin: 20px; */
+}
+
+p {
+    max-width: 70ch;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+ul,
+ol {
+    margin: 0 5em 10px 5em;
+}
+
+li {
+    line-height: 1.7;
+    color: var(--secondary-text);
+}
+
+.items {
+    list-style: circle;
+}
+
+.links {
+    position: relative;
+    color: var(--accent-links);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.links:hover {
+    color: var(--link-hover);
+}
+
+.links::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-links);
+    transition:
+        width 0.3s,
+        background-color 0.3s;
+}
+
+.links:hover::after {
+    background-color: var(--link-hover);
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.aboutMe {
+    margin-bottom: 20px;
+}
+
+.ask {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    padding: 0px 10px 10px 10px;
+    margin-bottom: 2rem;
+    border: 3px solid var(--borders-dividers);
+    border-radius: 0.75rem;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    z-index: 1;
+    width: min(90%, 1200px);
+    transform: translateX(-50%);
+    background-color: var(--body-background);
+}
+
+#input {
+    width: 100%;
+    border: 2px solid var(--borders-dividers);
+    border-radius: 0.5rem;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+/* .myButton {
+    display: flex;
+} */
+
+.message-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.query-group {
+    align-items: flex-end;
+}
+
+.answer-group {
+    align-items: flex-start;
+}
+
+.label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--secondary-text);
+    margin-bottom: 3px;
+}
+
+.query {
+    width: max-content;
+    max-width: 80%;
+    padding: 5px 10px;
+    /* margin-left: auto;
+    margin-right: 0; */
+    font-size: 1rem;
+    text-align: right;
+    color: white;
+    border-radius: 0.5rem;
+    background-color: var(--secondary-text-light);
+}
+
+.answer {
+    width: max-content;
+    max-width: 80%;
+    padding: 5px 10px;
+    /* margin-left: 0;
+    margin-right: auto; */
+    font-size: 0.9rem;
+    text-align: left;
+    border-radius: 0.5rem;
+    background-color: var(--borders-dividers);
+}
+
+.empty {
+    width: 100%;
+    height: 20em;
+}
+
+/* Tablet and up styles */
+@media (min-width: 768px) {
+    html {
+        font-size: clamp(14px, 2vw, 18px);
+    }
+
+    body {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    #intro {
+        padding: 50px 50px 50px 50px;
+    }
+
+    #input {
+        width: 80%;
+    }
+
+    .query,
+    .answer {
+        font-size: 1rem;
+    }
+}
