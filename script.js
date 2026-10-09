@@ -30,7 +30,7 @@ async function handler() {
             parts: [{ text: input.value }],
         });
 
-        console.log('Query with conversation History:', conversationHistory);
+        // console.log('Query with conversation History:', conversationHistory);
 
         // Send the entire conversation history to Gemini
         const response = await window.fetch(url, {
