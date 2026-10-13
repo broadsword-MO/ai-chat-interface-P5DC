@@ -41,25 +41,39 @@ h1 {
 }
 
 .ask {
-    padding: 0px 10px 10px 10px;
-    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.75rem;
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 1200px);
+    padding: 1rem;
     border: 3px solid var(--borders-dividers);
     border-radius: 0.75rem;
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    z-index: 1;
-    width: min(90%, 1200px);
-    transform: translateX(-50%);
     background-color: var(--body-background);
+    z-index: 1;
+}
+
+.ask h1 {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 1.25rem;
 }
 
 #input {
+    min-width: 0;
     width: 100%;
+    margin: 0;
+    padding: 0.6rem 0.75rem;
     border: 2px solid var(--borders-dividers);
     border-radius: 0.5rem;
-    padding: 5px 10px;
-    margin-bottom: 10px;
+}
+
+.ask button {
+    padding: 0.6rem 1rem;
 }
 
 .message-group {
@@ -115,16 +129,8 @@ h1 {
         font-size: clamp(14px, 2vw, 18px);
     }
 
-    body {
-        font-size: 1rem;
-    }
-
     h1 {
         font-size: 2.5rem;
-    }
-
-    #input {
-        width: 80%;
     }
 
     .query,
