@@ -20,15 +20,16 @@ async function handler() {
 
     try {
         // Validate input
-        if (!input.value.trim()) {
+        const query = input.value;
+        if (!query.trim()) {
             alert('Please enter a question.');
             return;
         }
-        // Add user's query to the conversation history
-        conversationHistory.push({
+
+        const userMessage = {
             role: 'user',
-            parts: [{ text: input.value }],
-        });
+            parts: [{ text: query }],
+        };
 
         // console.log('Query with conversation History:', conversationHistory);
 
@@ -39,7 +40,9 @@ async function handler() {
                 'Content-Type': 'application/json',
                 'x-goog-api-key': apiKey,
             },
-            body: JSON.stringify({ contents: conversationHistory }),
+            body: JSON.stringify({
+                contents: [...conversationHistory, userMessage],
+            }),
         });
 
         if (!response.ok) {
@@ -52,16 +55,15 @@ async function handler() {
 
         // Process response
         const data = await response.json();
-        const query = input.value;
         const answer = data.candidates[0].content.parts[0].text;
 
-        // Add Gemini's reply to the conversation history
-        conversationHistory.push({
+        // Add user query and Gemini's answer to the conversation history
+        conversationHistory.push(userMessage, {
             role: 'model',
             parts: [{ text: answer }],
         });
 
-        console.log('Answered Conversation History:', conversationHistory);
+        // console.log('Answered Conversation History:', conversationHistory);
 
         // Safely convert Markdown to HTML and sanitize it
         const markdown = marked.parse(answer);
@@ -93,7 +95,7 @@ async function handler() {
         conversation.append(queryWrapper, answerWrapper);
 
         // Reset input
-        input.value = '';
+        if (input.value === query) input.value = '';
         input.focus();
     } catch (error) {
         console.error(error);
