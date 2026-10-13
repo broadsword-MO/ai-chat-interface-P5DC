@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-* {
+*:not(ol, ul) {
     margin: 0;
     padding: 0;
     font: inherit;
